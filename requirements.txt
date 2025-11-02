@@ -1,0 +1,44 @@
+# --- Core utilities ---
+python-dotenv
+ipykernel
+pandas
+numexpr
+validators==0.28.1
+requests
+
+# --- LangChain ecosystem (modern versions) ---
+langchain==0.2.*
+langchain-core==0.2.*
+langchain-community==0.2.*
+langchain-text-splitters
+langchain-groq
+langchain-openai
+langchain-huggingface
+langchain-chroma
+
+# --- Vector stores & embeddings ---
+chromadb
+faiss-cpu
+sentence-transformers
+duckdb
+
+# --- Document & web data sources ---
+beautifulsoup4
+pypdf
+pymupdf
+arxiv
+wikipedia
+youtube-transcript-api
+pytube
+unstructured
+
+# --- Model & API access ---
+openai
+huggingface_hub
+
+# --- Database connections ---
+mysql-connector-python
+SQLAlchemy
+
+# --- Frontend / App ---
+streamlit
