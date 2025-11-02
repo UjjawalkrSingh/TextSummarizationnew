@@ -93,7 +93,7 @@ if st.button("Summarize the Content from YT or Website"):
 # ------------------------- Footer -------------------------
 st.markdown("---")
 st.markdown(
-    "<p style='text-align: center;'>Built with ❤️ by <b>Ujjwal Sinha</b> • "
-    "<a href='https://github.com/Ujjwal-sinha' target='_blank'>GitHub</a></p>",
+    "<p style='text-align: center;'>Built with ❤️ by <b>Ujjawal Kr Singh</b> • "
+    "<a href='https://github.com/UjjawalkrSingh/TextSummarization' target='_blank'>GitHub</a></p>",
     unsafe_allow_html=True
 )
