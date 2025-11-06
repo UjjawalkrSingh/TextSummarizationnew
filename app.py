@@ -90,10 +90,4 @@ if st.button("Summarize the Content from YT or Website"):
             st.error(f"❌ Exception Occurred: {e}")
 
 
-# ------------------------- Footer -------------------------
-st.markdown("---")
-st.markdown(
-    "<p style='text-align: center;'>Built with ❤️ by <b>Ujjawal Kr Singh</b> • "
-    "<a href='https://github.com/UjjawalkrSingh/TextSummarization' target='_blank'>GitHub</a></p>",
-    unsafe_allow_html=True
-)
+
