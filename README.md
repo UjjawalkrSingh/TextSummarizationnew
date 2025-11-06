@@ -1,164 +1,226 @@
-# SummarifyX — AI-Powered Text Summarization from YouTube & Websites
+# 🧠 SummarifyX – AI-Powered YouTube & Website Summarizer
 
-**SummarifyX** is an advanced **AI-powered cloud-based summarization system** that converts long-form YouTube videos and website articles into short, meaningful, and high-value summaries.
+SummarifyX is an advanced **AI-powered, cloud-based text summarization system** designed to convert long-form **YouTube videos** and **web articles** into short, meaningful, and high-quality summaries.  
 
-It leverages **Large Language Models (LLMs)**, **LangChain**, and **Groq’s ultra-fast LPU infrastructure** to provide **instant, human-like summaries** — helping users digest massive information in seconds.
-
----
-
-## Key Features
-
-- **URL-Based Input** — Paste any **YouTube video link** or **website URL**.  
-- **Automatic Content Extraction** — Fetches YouTube transcripts or scrapes web article text using **BeautifulSoup**.  
-- **Groq-Powered Summarization** — Uses **Llama-3.3-70B-Versatile** model for blazing-fast and contextually rich summaries.  
-- **LangChain Integration** — Streamlines the summarization chain and document management.  
-- **Streamlit Interface** — Simple, intuitive, and responsive front-end for end users.  
-- **Executive Summaries (~300 words)** — Clear, concise, and semantically rich summaries.  
-- **Cloud-Optimized Efficiency** — Near-real-time inference via Groq’s **Language Processing Units (LPUs)**.  
+It leverages **Large Language Models (LLMs)** via **Groq's ultra-fast LPU-based inference**, along with **LangChain**, **Streamlit**, and **BeautifulSoup** to provide instant, accurate, and structured summaries — saving users valuable time and effort.
 
 ---
 
-## Tech Stack
+## 🚀 Features
 
-| Component | Technology |
-|------------|-------------|
-| **Frontend / UI** | Streamlit |
-| **LLM Interface** | LangChain |
-| **Model Provider** | Groq API (`llama-3.3-70b-versatile`) |
-| **Content Extraction** | BeautifulSoup (for web) + LangChain’s `YoutubeLoader` |
-| **Backend Language** | Python 3.10+ |
-| **Environment Management** | dotenv |
-| **Validation** | validators |
-| **HTTP Requests** | requests |
+- 🔗 Accepts both **YouTube URLs** and **website links**
+- ⚡ Powered by **Groq's LPU-based "Llama-3.3-70B-Versatile"** model
+- 🧩 Uses **LangChain** for intelligent summarization
+- 🧠 Generates ~300-word **executive summaries**
+- 🌐 Fast web content extraction using **BeautifulSoup**
+- 💡 Clean and interactive **Streamlit UI**
+- ☁️ Cloud-ready, scalable, and efficient
 
 ---
 
-## System Architecture
+## 🧰 Tech Stack
 
-```mermaid
-graph TD
-A[User Input URL + Groq API Key] --> B{Check URL Type}
-B -->|YouTube| C[LangChain YoutubeLoader → Transcript]
-B -->|Website| D[BeautifulSoup → Extract <p> Tags]
-C --> E[LangChain Document Object]
-D --> E
-E --> F[Groq Llama-3.3-70B Model via LangChain Chain]
-F --> G[AI Summarization (≈300 words)]
-G --> H[Display Summary in Streamlit UI]
+- **Python 3.10+**
+- **LangChain**
+- **Groq API**
+- **BeautifulSoup (bs4)**
+- **Streamlit**
+- **Requests**
+- **dotenv**
 
-- Installation & Setup
-1️. Clone the Repository
-git clone https://github.com/UjjawalkrSingh/TextSummarization.git
-cd TextSummarization
+---
 
-2️. Create and Activate Virtual Environment
+## ⚙️ Installation & Setup
+
+Follow these simple steps to install and run SummarifyX locally:
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/<your-username>/SummarifyX.git
+cd SummarifyX
+```
+
+### 2️⃣ Create a Virtual Environment
+
+```bash
 python3 -m venv venv
-source venv/bin/activate   # On Mac/Linux
-venv\Scripts\activate      # On Windows
+```
 
-3️. install Dependencies
+### 3️⃣ Activate the Virtual Environment
+
+**Windows:**
+```bash
+venv\Scripts\activate
+```
+
+**macOS/Linux:**
+```bash
+source venv/bin/activate
+```
+
+### 4️⃣ Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-4️. Add Environment Variables
-Create a .env file in the root directory:
+### 5️⃣ Get Your Groq API Key
+
+- Visit [https://console.groq.com](https://console.groq.com)
+- Sign in and generate your **Groq API Key**
+
+### 6️⃣ Create a `.env` File
+
+In your project root, create a `.env` file:
+
+```bash
+touch .env
+```
+
+### 7️⃣ Add Your API Key to `.env`
+
+```bash
 GROQ_API_KEY=your_groq_api_key_here
+```
 
- 
- You can get your Groq API key from https://console.groq.com.
+### 8️⃣ Run the Streamlit App
 
-
-Usage
--Run the Application
+```bash
 streamlit run app.py
+```
 
- In the Browser
+### 9️⃣ Open in Browser
 
+After launching, Streamlit will provide a local URL (e.g., `http://localhost:8501`).  
+Open it in your browser.
 
-Open the local Streamlit app (usually at http://localhost:8501)
+### 🔟 Enter Your URL & Summarize
 
+- Enter your **Groq API key** in the sidebar (optional if stored in `.env`)
+- Paste any **YouTube** or **website** URL
+- Click **"Summarize the Content"**
+- 🎉 Get your AI-generated summary instantly!
 
-Enter your Groq API Key
+---
 
+## 🧩 Example Use Case
 
-Paste any YouTube video URL or Website link
+| Input                     | Output                      |
+| ------------------------- | --------------------------- |
+| YouTube Lecture (45 mins) | 300-word structured summary |
+| Research Blog (5 pages)   | Executive overview          |
+| Corporate Article         | Bullet-style key insights   |
 
+---
 
-Click “Summarize the Content”
+## 🧠 How It Works (Behind the Scenes)
 
- - Example Use Cases
+1. Detects if the URL is a **YouTube video** or a **website**
+2. Loads data via **LangChain's YouTubeLoader** or **BeautifulSoup scraper**
+3. Converts text into LangChain **Document objects**
+4. Uses **Groq's Llama-3.3-70B-Versatile** model for summarization
+5. Applies a **custom summarization prompt template**
+6. Displays a concise, 300-word summary instantly
 
+---
 
-Summarize an entire YouTube lecture or podcast
+## 📈 Benefits
 
+- Saves time for **students, researchers, and professionals**
+- Reduces information overload
+- Enhances **productivity** and **decision-making**
+- Enables quick content understanding from **any public link**
 
-Get quick takeaways from long research articles
+---
 
+## 🛠️ Project Structure
 
-Generate summaries for corporate reports or blogs
+```
+SummarifyX/
+│
+├── app.py                 # Main Streamlit application
+├── requirements.txt       # Python dependencies
+├── .env                   # Environment variables (API keys)
+├── .gitignore            # Git ignore file
+├── README.md             # Project documentation
+└── LICENSE               # MIT License
+```
 
+---
 
-Use for academic revision, knowledge extraction, or content review
+## 📦 Requirements
 
+Create a `requirements.txt` file with the following dependencies:
 
+```txt
+streamlit
+langchain
+langchain-groq
+langchain-community
+beautifulsoup4
+requests
+python-dotenv
+youtube-transcript-api
+```
 
- Code Overview
-SectionDescriptionLangChain + GroqIntegrates the Groq Llama-3.3-70B model for summarization.YoutubeLoaderFetches and parses YouTube transcripts automatically.BeautifulSoupExtracts readable paragraph text (<p>) from web pages.PromptTemplateCustom summarization prompt (≈300 words).Streamlit UIHandles user inputs and output visualization.
-Summarization Flow
+---
 
+## 🔒 Security Note
 
-Validate URL and API key.
+- Never commit your `.env` file to version control
+- Add `.env` to your `.gitignore` file
+- Keep your Groq API key confidential
 
+---
 
-Detect source type (YouTube / Website).
+## 🤝 Contributing
 
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Extract textual data.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
+---
 
-Convert to LangChain Document format.
+## 📧 Contact
 
+For questions or suggestions, please open an issue on GitHub.
 
-Apply summarization chain using Groq’s LLM.
+---
 
+## 📄 License
 
-Display structured summary in UI.
+This project is licensed under the **MIT License**.  
+See [LICENSE](LICENSE) for details.
 
+---
 
+## 🙏 Acknowledgments
 
-- Example Output
-Input:
+- **Groq** for providing ultra-fast LLM inference
+- **LangChain** for simplifying LLM application development
+- **Streamlit** for the intuitive web framework
+- **OpenAI** for advancing AI research
 
-https://www.youtube.com/watch?v=dQw4w9WgXcQ
+---
 
-Output:
+## 🔮 Future Enhancements
 
-A concise, well-structured summary of the entire video transcript (~300 words), highlighting main ideas, arguments, and context.
+- 📝 Support for PDF document summarization
+- 🎯 Multi-language support
+- 📊 Summary quality scoring
+- 💾 Save and export summaries
+- 🔄 Batch processing multiple URLs
+- 📱 Mobile-responsive design improvements
 
+---
 
- - Performance
-MetricDescriptionSpeedNear real-time summarization due to Groq LPUs.ScalabilityEfficient handling of large text inputs.AccuracyContext-aware compression via Llama-3.3-70B.Ease of UseSingle-click summarization via Streamlit UI.
+> ⚡ **SummarifyX** — Making long-form content short, smart, and simple!
 
-- Author
-Developed by: Ujjawal Kr Singh
-- AI Engineer | Cloud Developer | Data Science Enthusiast
+---
 
- - License
-This project is licensed under the MIT License — see the LICENSE file for details.
-
-- Acknowledgements
-
-
-LangChain — Framework for building LLM applications.
-
-
-Groq — High-performance LPU infrastructure for AI inference.
-
-
-Streamlit — Simplified app deployment for ML tools.
-
-
-BeautifulSoup — Web scraping utilities.
-
-“SummarifyX — Making knowledge faster, smarter, and simpler.”
-
-
+**⭐ If you find this project helpful, please give it a star on GitHub!**
