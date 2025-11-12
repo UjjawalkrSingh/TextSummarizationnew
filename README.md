@@ -1,216 +1,138 @@
 
-# ☁️ CloudFile Reader – AI-Powered Content Summarization System
+````markdown
+# 🧠 SmartMath: AI Math Solver & Knowledge Assistant
 
-**CloudFile Reader** is an advanced **AI-driven, cloud-based summarization engine** that transforms long-form **YouTube videos**, **web articles**, and **uploaded documents** into short, structured, and meaningful summaries.  
-
-Built using **Groq’s LPU-powered inference**, **LangChain**, and **Streamlit**, it delivers ultra-fast, accurate, and context-aware summaries — enabling users to consume vast information effortlessly.
+**SmartMath** is an intelligent AI-powered assistant built with **LangChain**, **Groq LLMs**, and **Streamlit**.  
+It combines **mathematical computation**, **logical reasoning**, and **real-time knowledge retrieval** from Wikipedia — all in one unified interface.
 
 ---
 
 ## 🚀 Key Features
 
-- 🔗 Supports both **YouTube URLs** and **web links**
-- 📄 Upload and summarize **text**, **PDF**, and **Word** files
-- ⚡ Powered by **Groq’s Llama-3.3-70B-Versatile** model
-- 🧠 Produces precise **300-word executive summaries**
-- 🌐 Intelligent web scraping with **BeautifulSoup**
-- 💡 Modern and interactive **Streamlit interface**
-- ☁️ Fully cloud-ready and scalable for enterprise usage
+- 🧮 **Mathematical Problem Solving**  
+  Handles arithmetic, algebra, geometry, and advanced calculations using powerful LLM math reasoning.
+
+- 🤖 **Logical Reasoning**  
+  Explains answers step-by-step, making it ideal for problem-solving and conceptual understanding.
+
+- 🌐 **Knowledge Assistant**  
+  Fetches real-time information and summaries directly from **Wikipedia**.
+
+- 💬 **Interactive Chat Interface**  
+  Built with **Streamlit Chat UI**, enabling smooth, real-time AI conversations.
 
 ---
 
-## 🧰 Tech Stack
+## 🧩 Tech Stack
 
-- **Python 3.10+**
-- **LangChain**
-- **Groq API**
-- **BeautifulSoup (bs4)**
-- **Streamlit**
-- **Requests**
-- **dotenv**
+- **Frontend:** Streamlit  
+- **Backend:** LangChain  
+- **Model Provider:** Groq (LLaMA 3.3 70B Versatile)  
+- **Tools:** LangChain Agents, Wikipedia API, LLMMathChain  
 
 ---
 
 ## ⚙️ Installation & Setup
 
-Follow these steps to run **CloudFile Reader** locally:
-
 ### 1️⃣ Clone the Repository
-
 ```bash
-git clone https://github.com/<your-username>/CloudFileReader.git
-cd CloudFileReader
+git clone https://github.com/yourusername/SmartMath.git
+cd SmartMath
 ````
 
-### 2️⃣ Create a Virtual Environment
+### 2️⃣ Create and Activate a Virtual Environment
 
 ```bash
+# For macOS/Linux
 python3 -m venv venv
-```
+source venv/bin/activate
 
-### 3️⃣ Activate the Virtual Environment
-
-**Windows:**
-
-```bash
+# For Windows
+python -m venv venv
 venv\Scripts\activate
 ```
 
-**macOS/Linux:**
-
-```bash
-source venv/bin/activate
-```
-
-### 4️⃣ Install Dependencies
+### 3️⃣ Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 5️⃣ Obtain Your Groq API Key
+### 4️⃣ Set Your Groq API Key
 
-* Visit [https://console.groq.com](https://console.groq.com)
-* Sign in and create your **Groq API Key**
+In the Streamlit sidebar, you’ll be prompted to enter your **Groq API Key**.
+You can obtain it from [https://console.groq.com/](https://console.groq.com/).
 
-### 6️⃣ Create a `.env` File
-
-```bash
-touch .env
-```
-
-### 7️⃣ Add Your API Key to `.env`
+Alternatively, you can set it as an environment variable:
 
 ```bash
-GROQ_API_KEY=your_groq_api_key_here
+export GROQ_API_KEY="your_api_key_here"
 ```
 
-### 8️⃣ Run the Streamlit Application
+### 5️⃣ Run the Application
 
 ```bash
 streamlit run app.py
 ```
 
-### 9️⃣ Open in Your Browser
-
-Streamlit will launch a local server (e.g., `http://localhost:8501`).
-Open this in your browser to start summarizing instantly!
-
----
-
-## 🧩 Example Use Cases
-
-| Input Type               | Output Summary Type         |
-| ------------------------ | --------------------------- |
-| YouTube Lecture (1 hour) | 300-word executive overview |
-| Web Article (5 pages)    | Bullet-style key summary    |
-| Research PDF             | Condensed structured report |
-
 ---
 
 ## 🧠 How It Works
 
-1. Detects whether the input is a **YouTube**, **website**, or **uploaded file**
-2. Loads data using **LangChain’s loaders** or **BeautifulSoup**
-3. Converts text into **LangChain Document objects**
-4. Summarizes using **Groq’s Llama-3.3-70B-Versatile** model
-5. Applies a custom-built summarization **PromptTemplate**
-6. Displays a 300-word summary via Streamlit UI
+1. **User Input:**
+   Enter a math or reasoning question in the text area.
+
+2. **LLM Processing:**
+   The Groq-powered LLaMA model processes your query using LangChain’s tools and reasoning chains.
+
+3. **Tool Execution:**
+
+   * The **Calculator Tool** handles mathematical operations.
+   * The **Wikipedia Tool** retrieves external facts.
+   * The **Reasoning Tool** applies step-by-step logic.
+
+4. **Response Generation:**
+   The agent intelligently selects the right tool(s) and presents a structured explanation and final answer.
 
 ---
 
-## 📈 Benefits
+## 🧾 Example Query
 
-* ⏱️ Saves hours of reading or watching time
-* 🧩 Provides quick understanding for decision-making
-* 📚 Ideal for **students, researchers, analysts, and professionals**
-* 🌎 Summarizes any public content link efficiently
+**Input:**
 
----
+> I have 5 bananas and 7 grapes. I eat 2 bananas and give away 3 grapes. Then I buy a dozen apples and 2 packs of blueberries. Each pack has 25 berries. How many total fruits do I have now?
 
-## 🗂️ Project Structure
+**Output:**
 
-```
-CloudFileReader/
-│
-├── app.py                 # Main Streamlit application
-├── requirements.txt       # Python dependencies
-├── .env                   # Environment variables (API keys)
-├── .gitignore             # Git ignore file
-├── README.md              # Project documentation
-└── LICENSE                # MIT License
-```
+> 🍎 You have a total of **67 fruits** after all transactions.
 
 ---
 
-## 📦 Requirements
-
-Create a `requirements.txt` file containing:
+## 📦 Example `requirements.txt`
 
 ```txt
 streamlit
 langchain
 langchain-groq
 langchain-community
-beautifulsoup4
-requests
-python-dotenv
-youtube-transcript-api
+wikipedia
 ```
 
 ---
 
-## 🔒 Security Best Practices
+## 💡 Future Enhancements
 
-* Never share your `.env` file publicly
-* Add `.env` to `.gitignore`
-* Keep all API keys confidential
-
----
-
-## 🤝 Contributing
-
-Contributions are highly welcome! To contribute:
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/new-feature`)
-3. Commit your changes (`git commit -m 'Add new feature'`)
-4. Push to your branch (`git push origin feature/new-feature`)
-5. Open a Pull Request
+* Support for **symbolic algebra** and **graph plotting**
+* Integration with **WolframAlpha** or **Google Search APIs**
+* Multi-language reasoning capability
 
 ---
 
-## 📧 Contact
+## 🛡️ License
 
-For questions, feedback, or suggestions — open an **issue** on GitHub.
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
-See [LICENSE](LICENSE) for full details.
+This project is released for educational and research purposes.
+All model usage must comply with the **Groq API Terms of Service** and **Wikipedia usage policies**.
 
 ---
 
-## 🙏 Acknowledgments
-
-* **Groq** – for blazing-fast LPU inference
-* **LangChain** – for modular LLM integration
-* **Streamlit** – for seamless web UI creation
-* **BeautifulSoup** – for powerful HTML parsing
-
----
-
-## 🔮 Future Enhancements
-
-* 📝 Advanced PDF summarization
-* 🌐 Multi-language support
-* 📊 Smart summary scoring metrics
-* 💾 Save/export summaries to cloud storage
-* 🔄 Batch URL processing
-* 📱 Enhanced mobile-responsive UI
-
----
-
-> ☁️ **CloudFile Reader** — Transforming information overload into clear insight, one summary at a time.
+```
